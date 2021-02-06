@@ -1,8 +1,12 @@
 package org.launchcode.techjobs_oo.Test;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.launchcode.techjobs_oo.*;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
 import static org.junit.Assert.*;
 
@@ -12,6 +16,9 @@ public class JobTest {
     Job test_job3;
     Job test_job4;
     Job test_job5;
+
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private final PrintStream originalOut = System.out;
 
 
     @Before
@@ -56,5 +63,36 @@ public class JobTest {
     @Test
     public void testJobsForEquality(){
         assertNotEquals(test_job4, test_job5);
+    }
+
+    @Before
+    public void setUpStreams(){
+        System.setOut(new PrintStream(outContent));
+    }
+
+    @After
+    public void restoreStreams(){
+        System.setOut(originalOut);
+    }
+
+    @Test
+    public void jobToString(){
+        String testString = test_job1.toString();
+        assertEquals(testString.charAt(0), '\n');
+        assertEquals(testString.charAt(testString.length()-1), '\n');
+    }
+
+    @Test
+    public void jobToString2(){
+        assertEquals(test_job1.toString(), "\nID: " + test_job1.getId() + '\n' + "Name: Data not available"
+                + "\n" + "Employer: Data not available" + '\n' + "Location: Data not available" + '\n' +
+                "Position Type: Data not available" + '\n' + "Core Competency: Data not available" + '\n');
+    }
+
+    @Test
+    public void jobToString3(){
+        assertEquals(test_job4.toString(), "\nID: " + test_job4.getId() + '\n' + "Name: " + test_job4.getName()
+                + "\n" + "Employer: " + test_job4.getEmployer().toString() + '\n' + "Location: " + test_job4.getLocation().toString() + '\n' +
+                "Position Type: " + test_job4.getPositionType().toString() + '\n' + "Core Competency: " + test_job4.getCoreCompetency().toString() + '\n');
     }
 }
