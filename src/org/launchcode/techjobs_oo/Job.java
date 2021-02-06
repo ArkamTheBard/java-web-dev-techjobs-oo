@@ -60,22 +60,22 @@ public class Job {
         } else{
             jobString += getName() + "\nEmployer: ";
         }
-        if(getEmployer() == null){
+        if(getEmployer() == null || getEmployer().toString() == ""){
             jobString += "Data not available" + "\nLocation: ";
         } else{
             jobString += getEmployer().getValue() + "\nLocation: ";
         }
-        if(getLocation() == null){
+        if(getLocation() == null || getLocation().toString() == ""){
             jobString += "Data not available" + "\nPosition Type: ";
         } else{
             jobString += getLocation().getValue() + "\nPosition Type: ";
         }
-        if(getPositionType() == null){
+        if(getPositionType() == null || getPositionType().toString() == ""){
             jobString += "Data not available" + "\nCore Competency: ";
         }else{
             jobString += getPositionType().getValue() + "\nCore Competency: ";
         }
-        if(getCoreCompetency() == null){
+        if(getCoreCompetency() == null || getCoreCompetency().toString() == ""){
             jobString += "Data not available\n";
         }else{
             jobString += getCoreCompetency().getValue() + "\n";
