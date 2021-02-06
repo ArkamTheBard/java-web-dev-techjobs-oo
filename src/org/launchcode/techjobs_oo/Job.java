@@ -50,8 +50,12 @@ public class Job {
     @Override
     public String toString(){
         String jobString;
+        if((name == null || name == "") && employer == null && location == null && positionType == null && coreCompetency == null){
+            jobString = "\nOOPS! This job does not seem to exist.\n";
+            return jobString;
+        }
         jobString = '\n' + "ID: " + getId() + '\n' + "Name: ";
-        if(getName() == null){
+        if(getName() == null || getName() == ""){
             jobString += "Data not available" + "\nEmployer: ";
         } else{
             jobString += getName() + "\nEmployer: ";

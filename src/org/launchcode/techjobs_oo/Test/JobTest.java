@@ -84,9 +84,7 @@ public class JobTest {
 
     @Test
     public void jobToString2(){
-        assertEquals(test_job1.toString(), "\nID: " + test_job1.getId() + '\n' + "Name: Data not available"
-                + "\n" + "Employer: Data not available" + '\n' + "Location: Data not available" + '\n' +
-                "Position Type: Data not available" + '\n' + "Core Competency: Data not available" + '\n');
+        assertEquals(test_job1.toString(), "\nOOPS! This job does not seem to exist.\n");
     }
 
     @Test
